@@ -1,0 +1,23 @@
+{{define "main"}}
+<main>
+  {{range .}}
+  <div class="container">
+    {{if eq .Type "hero"}}
+    {{template "hero" .Content}}
+    {{end}}
+
+    {{if eq .Type "text"}}
+    {{template "text" .Content}}
+    {{end}}
+
+    {{if eq .Type "form"}}
+    {{template "form" .Content}}
+    {{end}}
+
+    {{if eq .Type "confirm"}}
+    {{template "confirm" .Content}}
+    {{end}}
+  </div>
+  {{end}}
+</main>
+{{end}}

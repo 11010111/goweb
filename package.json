@@ -1,0 +1,14 @@
+{
+  "name": "goweb",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "sass": "sass --watch src/scss:public/assets --style compressed",
+    "esbuild": "esbuild --watch src/javascript/index.js --bundle --minify --outfile=public/assets/index-bundle.js",
+    "start": "npm run sass & npm run esbuild"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.11",
+    "sass": "^1.69.7"
+  }
+}

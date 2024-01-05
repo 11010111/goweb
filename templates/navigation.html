@@ -1,0 +1,11 @@
+{{define "navigation"}}
+<header class="navigation">
+  <nav>
+    <ul>
+      {{range .Routes}}
+      <li><a href="{{.Href}}" {{if ne .Relation "" }} rel="{{.Relation}}" {{end}}>{{.Title}}</a></li>
+      {{end}}
+    </ul>
+  </nav>
+</header>
+{{end}}

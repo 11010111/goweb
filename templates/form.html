@@ -1,0 +1,23 @@
+{{define "form"}}
+<h2>{{.Headline}}</h2>
+<form method="post" action="/send">
+  <div class="field-wrapper">
+    <label for="firstname">Firstname</label>
+    <input id="firstname" type="text" name="firstname">
+  </div>
+
+  <div class="field-wrapper">
+    <label for="lastname">Lastname</label>
+    <input id="lastname" type="text" name="lastname">
+  </div>
+
+  <div class="field-wrapper">
+    <label for="email">E-Mail</label>
+    <input id="email" type="email" name="email" autocomplete="email">
+  </div>
+
+  <div class="field-wrapper">
+    <input type="submit" name="submit" value="Submit">
+  </div>
+</form>
+{{end}}

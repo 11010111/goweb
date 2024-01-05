@@ -1,0 +1,27 @@
+{{define "confirm"}}
+
+<div class="rte">
+  {{if .Headline}}
+  <h2>{{.Headline}}</h2>
+  {{end}}
+
+  {{if .Bodytext}}
+  <p>{{.Bodytext}}</p>
+  {{end}}
+
+  <ul class="list">
+    {{if .Firstname}}
+    <li>Firstname: {{.Firstname}}</li>
+    {{end}}
+
+    {{if .Lastname}}
+    <li>Lastname: {{.Lastname}}</li>
+    {{end}}
+
+    {{if .Email}}
+    <li>E-Mail: {{.Email}}</li>
+    {{end}}
+  </ul>
+</div>
+
+{{end}}
