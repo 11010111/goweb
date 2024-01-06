@@ -3,13 +3,13 @@ package main
 type Relation int
 
 const (
-	Default Relation = iota
-	Noopener
-	Noreferrer
-	Nofollow
-	Preload
-	Preconnect
-	Stylesheet
+	NONE Relation = iota
+	NOOPENER
+	NOREFERRER
+	NOFOLLOW
+	PRELOAD
+	PRECONNECT
+	STYLESHEET
 )
 
 func (rel Relation) String() string {

@@ -9,8 +9,8 @@ import (
 
 var navigation = Navigation{
 	Routes: []Route{
-		{Title: "Home", Href: "/", Target: "_self", Relation: Default.String()},
-		{Title: "Form", Href: "/form", Target: "_self", Relation: Nofollow.String()},
+		{Title: "Home", Href: "/", Target: SELF.String(), Relation: NONE.String()},
+		{Title: "Form", Href: "/form", Target: SELF.String(), Relation: NONE.String()},
 	},
 }
 
