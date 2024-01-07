@@ -2,8 +2,10 @@
 
 html {
   font-family: 'Courier New', Courier, monospace;
-  scroll-behavior: smooth;
   max-width: 100dvw;
+  background-color: #222;
+  color: #dedede;
+  scroll-behavior: smooth;
   overflow-x: hidden;
 
   @media (min-width: 1921px) {
@@ -44,6 +46,8 @@ header.navigation {
 }
 
 main {
+  color: #000;
+  background-color: #fff;
   min-height: 100dvh;
 }
 

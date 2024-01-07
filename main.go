@@ -5,13 +5,13 @@ import (
 	"log"
 	"net/http"
 	"strings"
+
+	"github.com/11010111/goweb/types"
 )
 
-var navigation = Navigation{
-	Routes: []Route{
-		{Title: "Home", Href: "/", Target: SELF.String(), Relation: NONE.String()},
-		{Title: "Form", Href: "/form", Target: SELF.String(), Relation: NONE.String()},
-	},
+var routes = []types.Route{
+	{Title: "Home", Href: "/", Target: types.SELF.String(), Relation: types.NONE.String()},
+	{Title: "Form", Href: "/form", Target: types.SELF.String(), Relation: types.NONE.String()},
 }
 
 var templ *template.Template
@@ -29,43 +29,58 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	page := Page{
-		Title:       "Website",
-		Description: "Website Description",
-		Index:       "index",
-		Follow:      "follow",
-		Navigation:  navigation,
-		Body: []Block[any]{
-			{Type: "hero", Content: Hero{
-				Headline: "Hero",
-			}},
-			{Type: "text", Content: Text{
-				Headline: "Text",
-				Bodytext: "Lorem ipsum...",
-			}},
-		},
-	}
+	page := types.NewPage()
+	page.SetTitle("Website")
+	page.SetDescription("Website Description")
+	page.SetIndex("index")
+	page.SetFollow("follow")
+	page.SetRoutes(routes)
+
+	hero := types.NewHero()
+	hero.SetHeadline("Hero Block")
+	hero.SetBodytext("Lorem ipsum...")
+
+	heroContent := types.NewContent()
+	heroContent.SetBlock(hero)
+	heroContent.SetContentType("hero")
+	page.AppendContent(heroContent)
+
+	text := types.NewText()
+	text.SetHeadline("Text Block")
+	text.SetBodytext("Lorem ipsum...")
+
+	textContent := types.NewContent()
+	textContent.SetContentType("text")
+	textContent.SetBlock(text)
+	page.AppendContent(textContent)
 
 	templ.ExecuteTemplate(w, "index.html", page)
 }
 
 func formHandler(w http.ResponseWriter, r *http.Request) {
-	page := Page{
-		Title:       "Form",
-		Description: "Form Description",
-		Index:       "index",
-		Follow:      "follow",
-		Navigation:  navigation,
-		Body: []Block[any]{
-			{Type: "hero", Content: Text{
-				Headline: "Hero",
-				Bodytext: "Lorem ipsum...",
-			}},
-			{Type: "form", Content: Form{
-				Headline: "Form",
-			}},
-		},
-	}
+	page := types.NewPage()
+	page.SetTitle("Website Form")
+	page.SetDescription("Website Form Description")
+	page.SetIndex("index")
+	page.SetFollow("follow")
+	page.SetRoutes(routes)
+
+	hero := types.NewHero()
+	hero.SetHeadline("Hero Block")
+	hero.SetBodytext("Lorem ipsum...")
+
+	heroContent := types.NewContent()
+	heroContent.SetBlock(hero)
+	heroContent.SetContentType("hero")
+	page.AppendContent(heroContent)
+
+	form := types.NewForm()
+	form.SetHeadline("Text Block")
+
+	formContent := types.NewContent()
+	formContent.SetBlock(form)
+	formContent.SetContentType("form")
+	page.AppendContent(formContent)
 
 	templ.ExecuteTemplate(w, "index.html", page)
 }
@@ -80,26 +95,33 @@ func sendHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	page := Page{
-		Title:       "Send",
-		Description: "Send Description",
-		Index:       "noindex",
-		Follow:      "nofollow",
-		Navigation:  navigation,
-		Body: []Block[any]{
-			{Type: "hero", Content: Hero{
-				Headline: "Thank you",
-				Bodytext: "Lorem ipsum...",
-			}},
-			{Type: "confirm", Content: Confirmation{
-				Headline:  "Submitted data",
-				Bodytext:  "Lorem ipsum...",
-				Firstname: firstname,
-				Lastname:  lastname,
-				Email:     email,
-			}},
-		},
-	}
+	page := types.NewPage()
+	page.SetTitle("Website Send Route")
+	page.SetDescription("Website Send Route Description")
+	page.SetIndex("noindex")
+	page.SetFollow("nofollow")
+	page.SetRoutes(routes)
+
+	hero := types.NewHero()
+	hero.SetHeadline("Hero Block")
+	hero.SetBodytext("Lorem ipsum...")
+
+	heroContent := types.NewContent()
+	heroContent.SetBlock(hero)
+	heroContent.SetContentType("hero")
+	page.AppendContent(heroContent)
+
+	confirm := types.NewConfirmation()
+	confirm.SetHeadline("Submitted data")
+	confirm.SetBodytext("Lorem ipsum...")
+	confirm.SetFirstname(firstname)
+	confirm.SetLastname(lastname)
+	confirm.SetEmail(email)
+
+	confirmContent := types.NewContent()
+	confirmContent.SetBlock(confirm)
+	confirmContent.SetContentType("confirm")
+	page.AppendContent(confirmContent)
 
 	templ.ExecuteTemplate(w, "index.html", page)
 }
