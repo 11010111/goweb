@@ -22,7 +22,6 @@ html {
 body {
   margin: 0;
   max-width: 100dvw;
-  overflow-x: hidden;
 }
 
 header.navigation {
@@ -101,6 +100,28 @@ form {
   .field-wrapper {
     display: grid;
     row-gap: rem(4);
+
+    input {
+      padding: rem(8) rem(12);
+      border: rem(1) solid rgba(0, 0, 0, 0.25);
+      border-radius: rem(3);
+      font-size: rem(16);
+    }
+
+    input[type="file"] {
+      padding: rem(5) 0;
+      border-color: transparent;
+    }
+
+    input[type="submit"] {
+      background-color: rgb(18, 97, 188);
+      color: #fff;
+
+      &:hover {
+        background-color: rgb(44, 125, 216);
+        border-color: rgba(0, 0, 0, 0.75);
+      }
+    }
   }
 }
 
