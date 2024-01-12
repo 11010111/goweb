@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
+	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/11010111/goweb/types"
@@ -86,13 +89,26 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func sendHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseMultipartForm(10 << 20)
+
 	firstname := r.FormValue("firstname")
 	lastname := r.FormValue("lastname")
 	email := r.FormValue("email")
+	files := r.MultipartForm.File["files"]
 
 	if firstname == "" || lastname == "" || email == "" {
 		http.Redirect(w, r, "/form", http.StatusNoContent)
 		return
+	}
+
+	for _, formFile := range files {
+		file, _ := formFile.Open()
+		dist, _ := os.Create("./uploads/" + formFile.Filename)
+		defer dist.Close()
+
+		if _, cpErr := io.Copy(dist, file); cpErr != nil {
+			fmt.Println(cpErr)
+		}
 	}
 
 	page := types.NewPage()

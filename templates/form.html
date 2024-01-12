@@ -1,6 +1,6 @@
 {{define "form"}}
 <h2>{{.Headline}}</h2>
-<form method="post" action="/send">
+<form method="post" action="/send" enctype="multipart/form-data">
   <div class="field-wrapper">
     <label for="firstname">Firstname</label>
     <input id="firstname" type="text" name="firstname" required>
@@ -14,6 +14,11 @@
   <div class="field-wrapper">
     <label for="email">E-Mail</label>
     <input id="email" type="email" name="email" autocomplete="email" required>
+  </div>
+
+  <div class="field-wrapper">
+    <label for="files">Files</label>
+    <input id="files" type="file" name="files" accept=".pdf" multiple>
   </div>
 
   <div class="field-wrapper">
