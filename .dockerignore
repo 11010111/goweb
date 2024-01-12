@@ -1,7 +1,7 @@
 /coverage
 /node_modules
+/.git
 /.vscode
 
-.env
-.env.local
-.DS_Store
+.editorconfig
+.gitignore
