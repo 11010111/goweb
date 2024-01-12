@@ -3,13 +3,13 @@ package types
 type Relation int
 
 const (
-	NONE Relation = iota
-	NOOPENER
-	NOREFERRER
-	NOFOLLOW
-	PRELOAD
-	PRECONNECT
-	STYLESHEET
+	REL_NONE Relation = iota
+	REL_NOOPENER
+	REL_NOREFERRER
+	REL_NOFOLLOW
+	REL_PRELOAD
+	REL_PRECONNECT
+	REL_STYLESHEET
 )
 
 func (rel Relation) String() string {

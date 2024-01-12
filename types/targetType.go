@@ -3,8 +3,8 @@ package types
 type Target int
 
 const (
-	SELF Target = iota
-	BLANK
+	TARGET_SELF Target = iota
+	TARGET_BLANK
 )
 
 func (t Target) String() string {

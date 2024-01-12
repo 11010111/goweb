@@ -10,8 +10,8 @@ import (
 )
 
 var routes = []types.Route{
-	{Title: "Home", Href: "/", Target: types.SELF.String(), Relation: types.NONE.String()},
-	{Title: "Form", Href: "/form", Target: types.SELF.String(), Relation: types.NONE.String()},
+	{Title: "Home", Href: "/", Target: types.TARGET_SELF.String(), Relation: types.REL_NONE.String()},
+	{Title: "Form", Href: "/form", Target: types.TARGET_SELF.String(), Relation: types.REL_NONE.String()},
 }
 
 var templ *template.Template

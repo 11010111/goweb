@@ -10,8 +10,8 @@ func TestRoute(t *testing.T) {
 	route := types.NewRoute()
 	route.SetTitle("Link")
 	route.SetHref("/")
-	route.SetTarget(types.SELF.String())
-	route.SetRelation(types.NONE.String())
+	route.SetTarget(types.TARGET_SELF.String())
+	route.SetRelation(types.REL_NONE.String())
 
 	if route.GetTitle() != "Link" {
 		t.Error("Title test failed")
